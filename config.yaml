@@ -7,10 +7,10 @@ disqusShortname: ''
 params:
   banner:
     buttonText: Get to know me!
-    subtitle: |-
-      IT IS WHAT IT IS. 
-      Until it's not. 
-    title: Hi, my name is Valeria
+    subtitle: 
+       Valeria Opre, LBS Graduate
+    title: IT IS WHAT IT IS.||
+      Until it's not.
   blog: {}
   contact:
     address:
