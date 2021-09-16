@@ -9,7 +9,7 @@ params:
     buttonText: Get to know me!
     subtitle: 
        Valeria Opre, LBS Graduate
-    title: IT IS WHAT IT IS.||
+    title: It is what it is.
       Until it's not.
   blog: {}
   contact:
@@ -73,8 +73,8 @@ params:
       - name: Elements
         url: elements.html
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    subtitle: Personal Portfolio
+    title: Valeria Opre
   tiles:
     enable: yes
     showcase:
@@ -83,8 +83,8 @@ params:
         title: About me
         url: blogs/valeria
       - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Tempus
+        subtitle: My portolio
+        title: Projects
         url: blogs/tempus
       - image: pic03.jpg
         subtitle: Lorem Etiam Nullam
