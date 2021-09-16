@@ -1,5 +1,5 @@
 ---
-title: "Ipsum"
+title: "ok"
 description: ""
 slug: "ipsum"
 image: pic10.jpg
