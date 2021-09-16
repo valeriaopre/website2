@@ -1,7 +1,7 @@
 ---
 title: "SOMETHING"
-description: "Lorem Etiam Nullam"
-slug: "magna"
+description: "please work pl"
+slug: "SOMETHING"
 image: pic09.jpg
 keywords: ""
 categories: 

@@ -1,7 +1,7 @@
 ---
 title: "ok"
 description: ""
-slug: "ipsum"
+slug: "OK"
 image: pic10.jpg
 keywords: ""
 categories: 
