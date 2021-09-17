@@ -80,8 +80,8 @@ params:
         title: About me
         url: post/post1
       - image: pic02.jpg
-        subtitle: Description pne
-        title: Project one
+        subtitle: Worrying polarisation of healthcare decisions: vaccination rates in the US seem to follow political parties rather than common sense. 
+        title: US elections and vaccinations rate
         url: blogs/tempus
       - image: pic03.jpg
         subtitle: Description two
