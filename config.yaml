@@ -58,11 +58,8 @@ params:
   name: Your name
   navigation:
     button1:
-      - name: Get Started
+      - name: My projects
         url: blogs
-    button2:
-      - name: Log In
-        url: '#'
     links:
       - name: Home
         url: '#'
@@ -71,7 +68,7 @@ params:
       - name: Generic Blog
         url: blogs/ipsum
       - name: Social Projects
-        url: SocialProjects.html
+        url: elements
     menu: Menu
     subtitle: Personal Portfolio
     title: Valeria Opre
