@@ -11,20 +11,5 @@ categories:
 - ''
 ---
 
-```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
-library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
-library(mosaic)
-library(ggthemes)
-library(lubridate)
-library(fivethirtyeight)
-library(here)
-library(skimr)
-library(janitor)
-library(vroom)
-library(tidyquant)
-library(rvest) # to scrape wikipedia page
-```
-
-
-something 
- 
+## My biography
+My name is __Valeria Opre__, I am 24 years old and I grew up in the German speaking region of Italy, South Tyrol. I went to the Italian highschool _Liceo Scientifico Torricelli_.

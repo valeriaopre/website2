@@ -51,9 +51,9 @@ disqusShortname = ""
       name = "About me"
       url = "post/post1"
 
-    #[[params.navigation.links]]
-     # name = "Generic Blog"
-      #url = "blogs/ipsum"
+    [[params.navigation.links]]
+      name = "US elections and vaccinations rate"
+      url = "blogs/blog1"
 
     [[params.navigation.links]]
       name = "Social Projects"
