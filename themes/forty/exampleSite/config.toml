@@ -56,9 +56,17 @@ disqusShortname = ""
       url = "blogs/blog1"
 
     [[params.navigation.links]]
-      name = "Social Projects"
-      url = "SocialProjects.html"
+      name = "Project two"
+      url = "blogs/blog2"
 
+   [[params.navigation.links]]
+      name = "Project three"
+      url = "blogs/blog3"
+      
+    [[params.navigation.links]]
+      name = "Project four"
+      url = "blogs/blog4"
+      
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
     # code below if you need more links. Buttons work in the same way.

@@ -86,19 +86,16 @@ params:
       - image: pic03.jpg
         subtitle: Description two
         title: Project two
-        url: blogs/magna
+        url: blogs/blog2
       - image: pic04.jpg
         subtitle: Description three
         title: Project three
-        url: blogs/ipsum
+        url: blogs/blog3
       - image: pic05.jpg
         subtitle: Description four
         title: Project four
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Description five
-        title: Project five
-        url: blogs/ipsum
+        url: blogs/blog4
+
   #two:
   #  buttonText: Projects
 #    enable: yes
