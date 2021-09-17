@@ -1,0 +1,31 @@
+---
+categories:
+- ""
+- ""
+date: "2020-09-14T22:42:51-05:00"
+description: Brief biography
+draft: false
+image: fototessera.jpg
+keywords: ""
+slug: post1
+title: Valeria Opre
+---
+## My biography
+My name is __Valeria Opre__, I am 24 years old and I grew up in the German speaking region of Italy, South Tyrol. I went to the Italian highschool _Liceo Scientifico Torricelli_.
+\
+I decided to move out and live in Vienna, where i first graduated in _Political Science_ and then completed my second degree with honours in _Business, Economics and Social Sciences_ at the Vienna University of Economics and Business. During this time I had the great chance to do an exchange semester at the SMU in Singapore.
+
+Before applying for my postgraduate studies in London I decided to pursue two internships to better shape my future goals: 
+  + As a _research consultant_ for __Action Institute__, a renowned economic and political NGO in Milan
+  + As an _equity analyst_ for __Wutis__, winning two pitching competition with McKinsey.
+ 
+Arriving to London for my Masters at LBS I am excited to learn more programming languages and how to use them to make more strategic business decisions!
+
+If you are interested in my profile, you can look at my [linkedin profile](https://www.linkedin.com/in/valeriaopre/).
+
+![](https://upload.wikimedia.org/wikipedia/commons/4/47/RS9327_LBS_Standard_Logo_RGB_AW-hpr.jpg)
+
+```{r LBS_logo, echo=FALSE, out.width="20%"}
+knitr::include_graphics("/img/fototessera.jpg", error = FALSE)
+```
+
