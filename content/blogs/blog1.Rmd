@@ -5,7 +5,7 @@ description: A graph
 draft: no
 image: pic02.jpg
 keywords: ''
-slug: post1
+slug: blog1
 categories:
 - ''
 - ''
