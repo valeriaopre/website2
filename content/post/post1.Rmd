@@ -10,6 +10,7 @@ categories:
 - ''
 - ''
 ---
+
 ## My biography
 My name is __Valeria Opre__, I am 24 years old and I grew up in the German speaking region of Italy, South Tyrol. I went to the Italian highschool _Liceo Scientifico Torricelli_.
 
@@ -30,7 +31,7 @@ If you are interested in my profile, you can look at my [linkedin profile](https
 
 ![](https://upload.wikimedia.org/wikipedia/commons/4/47/RS9327_LBS_Standard_Logo_RGB_AW-hpr.jpg)
 
-```{r LBS_logo, echo=FALSE, out.width="20%"}
+```{r picture, echo=FALSE, out.width="20%"}
  #knitr::include_graphics("/img/fototessera.jpg", error = FALSE)
 ```
 
