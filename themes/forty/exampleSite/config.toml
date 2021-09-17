@@ -1,7 +1,7 @@
 # Site settings
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "Forty"
+title = "Portfolio for Valeria Opre"
 theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
@@ -55,7 +55,7 @@ disqusShortname = ""
      # name = "Generic Blog"
       #url = "blogs/ipsum"
 
-   # [[params.navigation.links]]
+    [[params.navigation.links]]
       name = "Social Projects"
       url = "elements/SocialProjects"
 
