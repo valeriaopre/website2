@@ -81,7 +81,7 @@ params:
       - image: Fototessera.jpg
         subtitle: Biography
         title: About me
-        url: blogs/valeria
+        url: post/post1
       - image: pic02.jpg
         subtitle: My portolio
         title: Projects
