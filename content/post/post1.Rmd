@@ -1,14 +1,14 @@
 ---
-categories:
-- ""
-- ""
-date: "2020-09-14T22:42:51-05:00"
+title: "Valeria Opre"
+date: '2020-09-14T22:42:51-05:00'
 description: Brief biography
-draft: false
-image: fototessera.jpg
-keywords: ""
+draft: no
+image: Fototessera.jpg
+keywords: ''
 slug: post1
-title: Valeria Opre
+categories:
+- ''
+- ''
 ---
 ## My biography
 My name is __Valeria Opre__, I am 24 years old and I grew up in the German speaking region of Italy, South Tyrol. I went to the Italian highschool _Liceo Scientifico Torricelli_.
