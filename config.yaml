@@ -71,7 +71,7 @@ params:
       - name: Generic Blog
         url: blogs/ipsum
       - name: Social Projects
-        url: SocialProjects.html
+        url: elements/SocialProjects
     menu: Menu
     subtitle: Personal Portfolio
     title: Valeria Opre
