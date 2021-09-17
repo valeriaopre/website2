@@ -1,7 +1,24 @@
 ---
 title: "Social Projects"
-author: "Vale"
-date: "9/17/2021"
-output: html_document
+description: A brief collection of my social projects I participated in
+draft: no
+image: bello.jpg
+keywords: ''
+slug: Social Projects
+categories:
+- ''
+- ''
 ---
-One thing I like a lot is helping people!
+
+##Let's get on stage! Jedermann in Vienna: a great success! 
+
+Theater has been part of my younger days for many years! I felt the most alive while stepping on the stage and bringing any character to life! Being an actress gave me the chance to access the most diverse emotions, situations and even eras every time the light on the stages went on and the silence of the audience flood the theater.
+
+Marginalized groups have always had a very close place in my heart. 
+This is why, when I came across the play organised by the LifeBall in Vienna, a play that aimed to normalize homosexual love while raising funds for Aids Hospice, I finally found a way to fully express my support to this community.
+
+The play took place in the national Cathedral of St. Stephan, a symbol of Christianity and Austrian proud. Aas I joined the organisation, we were able to involve more than 100 volunteers 
+
+
+
+organisation "The Lifeball" in Vienna, that raises awareness about various diseases within the LGBTQ+ community and provides shelter and financial aid to its members I felt like a found a way to express my support more actively!
