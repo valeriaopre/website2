@@ -98,10 +98,10 @@ disqusShortname = ""
       url = "blogs/aliquam"
 
     [[params.tiles.showcase]]
-      title = "Tempus"
-      subtitle = "Feugiat Amet Tempus"
-      image = "pic02.jpg"
-      url = "blogs/tempus"
+      title = "US elections and vaccinations rate"
+      subtitle = "Worrying polarisation of healthcare decisions: vaccination rates in the US seem to follow political parties rather than common sense."
+      image = "bello.jpg"
+      url = "blogs/blog1"
 
     [[params.tiles.showcase]]
       title = "Magna"
