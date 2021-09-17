@@ -68,7 +68,7 @@ disqusShortname = ""
 
     # Button Style 1
     [[params.navigation.button1]]
-      name = "The project behind the person"
+      name = "my projects"
       url = "blogs"
 
     # Button Style 2
