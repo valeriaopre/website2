@@ -54,12 +54,12 @@ params:
       - icon: fa-linkedin
         label: LinkedIn
         url: https://www.linkedin.com/in/valeriaopre/
-  image: ''
-  name: Your name
+  image: 'bello.jpg'
+  name: Valeria Opre
   navigation:
-    button1:
-      - name: My projects
-        url: blogs
+   # button1:
+    #  - name: My projects
+     #   url: blogs
     links:
       - name: Home
         url: '#'
