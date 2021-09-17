@@ -6,15 +6,6 @@ image: pic02.jpg
 keywords: ''
 slug: blog1
 categories:
-  title: 'XYXYX'
-author: "Valeria Opre"
-date: "27.08.2021"
-output:
-  html_document:
-  theme: flatly
-highlight: zenburn
-toc: yes
-toc_float: yes
 - ''
 - ''
 ---
