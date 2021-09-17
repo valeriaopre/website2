@@ -3,12 +3,12 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: "Doodeling & painting are a way for me to wind down, detox and think about life."
+description: "xy"
 draft: false
-image: myart.jpg
+image: bello.jpg
 keywords: ""
-slug: lifeimitatesart
-title: Life Imitates Art
+slug: blogs
+title: Something
 ---
 
 Doodeling & painting are a way for me to wind down, detox and think about life.
