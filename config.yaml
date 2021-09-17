@@ -5,7 +5,7 @@ theme: forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
-  banner:
+  banner: 
     buttonText: Get to know me!
     subtitle: 
        Valeria Opre, LBS Graduate
@@ -85,8 +85,8 @@ params:
         url: blogs/blog1
       - image: pic03.jpg
         subtitle: Description two
-        title: Project two
-        url: blogs/blog2
+        title: Social Projects
+        url: elements/social Projects
       - image: pic04.jpg
         subtitle: Description three
         title: Project three
