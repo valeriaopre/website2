@@ -4,7 +4,7 @@ output:
   word_document: default
   pdf_document: default
 ---
-title: 'MAM 2022 Pre-programme Assignment'
+title: 'XYXYX'
 author: "Valeria Opre"
 date: "27.08.2021"
 output:
