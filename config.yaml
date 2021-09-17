@@ -99,10 +99,10 @@ params:
         subtitle: Description five
         title: Project five
         url: blogs/ipsum
-  two:
-    buttonText: Projects
-    enable: yes
-    subtitle: "I would like to take you on a journey and show you what drives me into waking up everyday and pushing through.
-    To know the person one must understand the reasons lying behind her actions."
-    title: Curiosity meets workaholic: a love story
-    url: blogs
+  #two:
+  #  buttonText: Projects
+#    enable: yes
+ #   subtitle: "I would like to take you on a journey and show you what drives me into waking up everyday and pushing through.
+  #  To know the person one must understand the reasons lying behind her actions."
+  #  title: Curiosity meets workaholic: a love story
+   # url: blogs
