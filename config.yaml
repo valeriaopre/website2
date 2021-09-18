@@ -82,7 +82,7 @@ params:
       - image: pic02.jpg
         subtitle: something
         title: US elections and vaccinations rate
-        url: blogs/blog1
+        url: blogs/blog11
       - image: pic03.jpg
         subtitle: Description two
         title: Social Projects

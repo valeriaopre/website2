@@ -1,0 +1,114 @@
+---
+title: "Valeria Opre"
+description: A graph
+draft: no
+image: pic02.jpg
+keywords: ''
+slug: blog11
+categories:
+- ''
+- ''
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="is-there-really-a-correlation-between-trump-supporters-and-vaccination-rates-in-the-us-lets-find-out" class="section level2">
+<h2>Is there really a correlation between Trump supporters and vaccination rates in the US? Let’s find out!</h2>
+<p>During one of our challenges for Applied Statistics, we extrapolated the most recent data from the US vaccination site and downloaded the election results per county. Our goal was provocative in terms of research question:
+we wanted to find out if, counties with a high percentage of population voting for Trump also reported low vaccinations rates.</p>
+<pre class="r"><code># Download CDC vaccination by county
+cdc_url &lt;- &quot;https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD&quot;
+vaccinations &lt;- vroom(cdc_url) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  filter(fips != &quot;UNK&quot;) # remove counties that have an unknown (UNK) FIPS code</code></pre>
+<pre><code>## Rows: 918718 Columns: 27</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (9): Date, FIPS, Recip_County, Recip_State, SVI_CTGY, Series_Complete_P...
+## dbl (18): MMWR_week, Series_Complete_Pop_Pct, Series_Complete_Yes, Series_Co...</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code># Download County Presidential Election Returns
+# https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ
+election2020_results &lt;- vroom(here::here(&quot;data&quot;, &quot;countypres_2000-2020.csv&quot;)) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  
+  # just keep the results for the 2020 election
+  filter(year == &quot;2020&quot;) %&gt;% 
+  
+  # change original name county_fips to fips, to be consistent with the other two files
+  rename (fips = county_fips)</code></pre>
+<pre><code>## Rows: 72617 Columns: 12</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (8): state, state_po, county_name, county_fips, office, candidate, party...
+## dbl (4): year, candidatevotes, totalvotes, version</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code># Download county population data
+population_url &lt;- &quot;https://www.ers.usda.gov/webdocs/DataFiles/48747/PopulationEstimates.csv?v=2232&quot;
+population &lt;- vroom(population_url) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  
+  # select the latest data, namely 2019
+  select(fips = fip_stxt, pop_estimate_2019) %&gt;% 
+  
+  # pad FIPS codes with leading zeros, so they are always made up of 5 characters
+  mutate(fips = stringi::stri_pad_left(fips, width=5, pad = &quot;0&quot;))</code></pre>
+<pre><code>## Rows: 3273 Columns: 165</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (2): State, Area_Name
+## dbl (70): FIPStxt, Rural-urban_Continuum Code_2003, Rural-urban_Continuum Co...</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>#we are going to take a look at the data first and then we will have to merge the data
+
+population_vaccinations &lt;- left_join(population, vaccinations, by=&quot;fips&quot;)
+
+
+pve &lt;- left_join(population_vaccinations, election2020_results, by=&quot;fips&quot;)</code></pre>
+<p>In order to run the analysis we decided the critia to use for mergin the two datasets. We decided to group them by “country”.</p>
+<pre class="r"><code>pve %&gt;%
+  filter(date ==&quot;08/03/2021&quot;) %&gt;% #selecting the most recent data
+  filter(candidate == &quot;DONALD J TRUMP&quot;) %&gt;% #we are choosing only people voting for trump
+  filter(series_complete_pop_pct &gt; 1) %&gt;% #we only choose counties that have a certain density (here, &gt;1%)
+  mutate(percentage_trump= candidatevotes/totalvotes*100) %&gt;% #we are creating a new variable that expresses the % of trumps voters
+  filter(percentage_trump &gt; 1) %&gt;% #we only choose values that are higher than 1 %
+  ggplot(aes(x=percentage_trump, y=series_complete_pop_pct)) + #we plot these two variables in a scatter plot
+  geom_point(aes(size = pop_estimate_2019))+ 
+  scale_size_continuous(range = c(0.01, 5))+
+  xlim(0,100)+ #we define the scale of the axes
+  ylim(0,100)+#we define the scale of the axes
+  labs(title = &quot;COVID-19 VACCINATION LEVELS OUT OF TOTAL POPULATION BY COUNTY&quot;,
+        subtitle = &quot;Most states on FULLY vaccinated only;CA, GA, IA, MI &amp; TX based on total doses administered&quot;,
+         x = &quot;2020 Trump Vote %&quot;, 
+         y = &quot;Percentage of Total Population Vaccinated&quot;,
+         caption = &quot;Centers for Disease Control, COVID Act NOW, state health depts&quot;)</code></pre>
+<p><img src="/blogs/blog11_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>pve</code></pre>
+<pre><code>## # A tibble: 6,157,883 × 39
+##    fips  pop_estimate_2019 date       mmwr_week recip_county   recip_state
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      
+##  1 00000         328239523 &lt;NA&gt;              NA &lt;NA&gt;           &lt;NA&gt;       
+##  2 01000           4903185 &lt;NA&gt;              NA &lt;NA&gt;           &lt;NA&gt;       
+##  3 01001             55869 09/18/2021        37 Autauga County AL         
+##  4 01001             55869 09/18/2021        37 Autauga County AL         
+##  5 01001             55869 09/18/2021        37 Autauga County AL         
+##  6 01001             55869 09/17/2021        37 Autauga County AL         
+##  7 01001             55869 09/17/2021        37 Autauga County AL         
+##  8 01001             55869 09/17/2021        37 Autauga County AL         
+##  9 01001             55869 09/16/2021        37 Autauga County AL         
+## 10 01001             55869 09/16/2021        37 Autauga County AL         
+## # … with 6,157,873 more rows, and 33 more variables:
+## #   series_complete_pop_pct &lt;dbl&gt;, series_complete_yes &lt;dbl&gt;,
+## #   series_complete_12plus &lt;dbl&gt;, series_complete_12plus_pop_pct &lt;dbl&gt;,
+## #   series_complete_18plus &lt;dbl&gt;, series_complete_18plus_pop_pct &lt;dbl&gt;,
+## #   series_complete_65plus &lt;dbl&gt;, series_complete_65plus_pop_pct &lt;dbl&gt;,
+## #   completeness_pct &lt;dbl&gt;, administered_dose1_recip &lt;dbl&gt;,
+## #   administered_dose1_pop_pct &lt;dbl&gt;, administered_dose1_recip_12plus &lt;dbl&gt;, …</code></pre>
+</div>
