@@ -10,5 +10,92 @@ categories:
 - ''
 ---
 
-## My biography
-My name is __Valeria Opre__, I am 24 years old and I grew up in the German speaking region of Italy, South Tyrol. I went to the Italian highschool _Liceo Scientifico Torricelli_.
+## Is there really a correlation between Trump supporters and vaccination rates in the US? Let's find out!
+
+During one of our challenges for Applied Statistics, we extrapolated the most recent data from the US vaccination site and downloaded the election results per county. Our goal was provocative in terms of research question:
+we wanted to find out if, counties with a high percentage of population voting for Trump also reported low vaccinations rates.
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest) # to scrape wikipedia page
+```
+
+
+```{r, cache=TRUE}
+
+# Download CDC vaccination by county
+cdc_url <- "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD"
+vaccinations <- vroom(cdc_url) %>% 
+  janitor::clean_names() %>% 
+  filter(fips != "UNK") # remove counties that have an unknown (UNK) FIPS code
+
+# Download County Presidential Election Returns
+# https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ
+election2020_results <- vroom(here::here("data", "countypres_2000-2020.csv")) %>% 
+  janitor::clean_names() %>% 
+  
+  # just keep the results for the 2020 election
+  filter(year == "2020") %>% 
+  
+  # change original name county_fips to fips, to be consistent with the other two files
+  rename (fips = county_fips)
+
+# Download county population data
+population_url <- "https://www.ers.usda.gov/webdocs/DataFiles/48747/PopulationEstimates.csv?v=2232"
+population <- vroom(population_url) %>% 
+  janitor::clean_names() %>% 
+  
+  # select the latest data, namely 2019
+  select(fips = fip_stxt, pop_estimate_2019) %>% 
+  
+  # pad FIPS codes with leading zeros, so they are always made up of 5 characters
+  mutate(fips = stringi::stri_pad_left(fips, width=5, pad = "0"))
+
+```
+
+
+
+
+```{r}
+#we are going to take a look at the data first and then we will have to merge the data
+
+population_vaccinations <- left_join(population, vaccinations, by="fips")
+
+
+pve <- left_join(population_vaccinations, election2020_results, by="fips")
+
+```
+
+In order to run the analysis we decided the critia to use for mergin the two datasets. We decided to group them by "country".
+
+```{r}
+
+pve %>%
+  filter(date =="08/03/2021") %>% #selecting the most recent data
+  filter(candidate == "DONALD J TRUMP") %>% #we are choosing only people voting for trump
+  filter(series_complete_pop_pct > 1) %>% #we only choose counties that have a certain density (here, >1%)
+  mutate(percentage_trump= candidatevotes/totalvotes*100) %>% #we are creating a new variable that expresses the % of trumps voters
+  filter(percentage_trump > 1) %>% #we only choose values that are higher than 1 %
+  ggplot(aes(x=percentage_trump, y=series_complete_pop_pct)) + #we plot these two variables in a scatter plot
+  geom_point(aes(size = pop_estimate_2019))+ 
+  scale_size_continuous(range = c(0.01, 5))+
+  xlim(0,100)+ #we define the scale of the axes
+  ylim(0,100)+#we define the scale of the axes
+  labs(title = "COVID-19 VACCINATION LEVELS OUT OF TOTAL POPULATION BY COUNTY",
+        subtitle = "Most states on FULLY vaccinated only;CA, GA, IA, MI & TX based on total doses administered",
+         x = "2020 Trump Vote %", 
+         y = "Percentage of Total Population Vaccinated",
+         caption = "Centers for Disease Control, COVID Act NOW, state health depts")
+
+pve
+
+```
