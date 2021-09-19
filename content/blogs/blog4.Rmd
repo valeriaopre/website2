@@ -4,8 +4,10 @@ author: "Valeria"
 date: "9/17/2021"
 output: html_document
 slug: blog4
+categories:
+- ''
+- ''
 ---
-
 
 
 ```{r load-libraries, include=FALSE}
@@ -56,9 +58,6 @@ bike <- bike0 %>%
 
 I then created a facet grid that plots bikes hired by month and year.
 
-```{r tfl_month_year_grid, out.width="100%"}
-knitr::include_graphics(here::here("images", "tfl_distributions_monthly.png"), error = FALSE)
-```
 
 > It becomes clear that the effect of national restrictive measures such as lockdowns have greatly influenced the bikes rent. This helps us explain the difference between the average number of rented bikes in May and June 2020 with previous years.
 
