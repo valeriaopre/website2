@@ -1,5 +1,5 @@
 ---
-title: "Coffee"
+title: "Coffee \ A bad day with coffee is better than a good day without it"
 subtitle: "A bad day with coffee is better than a good day without it"
 author: "Vale"
 date: "9/19/2021"
@@ -15,6 +15,6 @@ I think that transparency is key when working with someone. This is why I think 
 
 ```{r picture5, echo=FALSE, out.width="100%"}
 
-knitr::include_graphics("/img/coffee",error =FALSE)
+knitr::include_graphics("/img/life/coffee.jpg",error =FALSE)
 ```
 

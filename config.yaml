@@ -92,9 +92,9 @@ params:
         title: Life Expectancy comparison between my home countries; An overview
         url: blogs/blog3
       - image: pic05.jpg
-        subtitle: Description four
-        title: Project four
-        url: blogs/blog4
+        subtitle: A sweedish construction company that even Greta would approve of!
+        title: Winning equity research pitch awarded from McKinsey
+        url: blogs/Skanska.pdf
 
   #two:
   #  buttonText: Projects
