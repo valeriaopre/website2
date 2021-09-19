@@ -87,9 +87,9 @@ params:
         subtitle: Being part of a community has always been a key pillar to my life.
         title: Social Projects
         url: elements/socialProjects
-      - image: pic04.jpg
-        subtitle: Description three
-        title: Project three
+      - image: word.jpg
+        subtitle: New medical standards and increased GDP might lead the way to higher Life Expectancy for all countries.
+        title: Life Expectancy comparison between my home countries; An overview
         url: blogs/blog3
       - image: pic05.jpg
         subtitle: Description four

@@ -1,30 +1,104 @@
 ---
-title: "Untitled"
-author: "Vale"
+title: "Life Expectancy comparison between chosen countries"
+author: "Valeria"
 date: "9/17/2021"
 output: html_document
+image: word.jpg
+keywords: ''
+slug: blog3
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
 ```
 
-## R Markdown
+# Comparing my home countries on Life Expectancy.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+As you might have read already, I was born in Italy, yet I spent the last six Years living in Vienna,Austria. This is why I feel very connected to the countries.
+Accessing the `gapminder` dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007 I will draw a comparison between these countries.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+glimpse(gapminder)
+gapminder
 ```
 
-## Including Plots
+Your task is to produce two graphs of how life expectancy has changed over the years for the `country` and the `continent` you come from. 
 
-You can also embed plots, for example:
+I have created the `Italy_data, Austria_data` and `Europe_data` with the code below. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+Italy_data <- gapminder %>% 
+            filter(country == "Italy")
+
+Austria_data <- gapminder %>%
+            filter(country == "Austria")
+
+continent_data <- gapminder %>% 
+            filter(continent == "Europe")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r, lifeExp_Italy and Austria}
+plot_IT <- ggplot(Italy_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+    theme_bw()+
+  labs(title= "Life Expectancy over time in Italy",
+       x= "Years",
+       y= "Life Expectancy")
+   NULL 
+plot_AUT <- ggplot(Austria_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+    theme_bw()+
+   labs(title = "Life Expectancy over time in Austria",
+       x= "Years",
+       y= "Life Expectancy")
+   NULL 
+
+plot_IT
+plot_AUT
+```
+
+> ### Italy\
+The graph shows the steady increase in Life expectancy in Italy starting from 1952. 
+Nowadays, Italians are expected to live more than 80 years on average in comparison to less than 65 years in 1952 on average. 
+One of the reasons that could explain a higher life expectancy is an increase in medical assistance and better living standards.
+>At a first sight, I struggle to identify a big difference between the developmnent of Life Expectancy over time.
+For this reason, I will now create a plot for all countries in Europe, to see if there are any outliers.
+
+```{r lifeExp_Europe}
+ ggplot(data= continent_data, mapping = aes(x = year , y = lifeExp , colour= country, group = country))+
+   geom_point() + 
+   geom_smooth(se = FALSE) +
+    theme_bw()+
+  labs(title = "Development of Life Expectancy per country in Europe ",
+       x = " Years",
+       y = "Life Expectancy")+
+ NULL
+```
+> This plot allows us to notice that the European Life expectancy in 1952 ranged from 55 years in Bosnia to 72 in Norway. However, it also portraits an outlier, namely Turkey, which has seen the steadiest increase in life Expectancy over time, catching up with the more historically developed countries such as the once from the EU.
+
+
+>### Europe\
+Since 1952, every European country's life expectancy has increased. Even though the increase in some countries is greater than in others, the gap between European countries is now narrower than it was in 1952.
+As a result, some of the countries with the lowest life expectancy in 1952 have shown a greater increase in life expectancy over time than countries with already higher life expectancy  One reason for this could be that these countries  have been underdeveloped in terms of access to medical aid and living standards and have exploited the knowledge and assistance of other countries strongly improving life expectancy.
+Countries with higher life expectancy in 1952, on the other hand, could primarily increase their life expectancy through new research and findings. Furthermore, once a certain standard is reached, it appears difficult to increase life expectancy further.
+
+Next, I will produce a general graph plotting life expectancy over time graph, grouped by continent.
+
+```{r lifeExp_facet_by_continent}
+ ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= country))+
+   geom_point() + 
+   geom_smooth(se = FALSE) +
+   facet_wrap(~continent) + 
+   theme(legend.position="none") +  #remove all legends
+   NULL
+```
+
+> ### Life expectancy over time\
+Overall, life expectancy is rising, but there are some regional differences. While life expectancy is increasing in every country in the Americas, Oceania, and Europe, and the gap between countries is closing, it is widening in Africa and Asia.
+This could be explained from stronger polarization between the development of countries within Asia and Africa: some countries in Asia and Africa are very underdeveloped or do not have access to the same financial aid as other countries, whereas other countries have made significant progress over the years. Another factor that may have reduced life expectancy in some countries is war, disease, or political instability.
+

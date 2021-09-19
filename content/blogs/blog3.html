@@ -1,29 +1,118 @@
 ---
-title: "Untitled"
-author: "Vale"
+title: "Life Expectancy comparison between chosen countries"
+author: "Valeria"
 date: "9/17/2021"
 output: html_document
+image: word.jpg
+keywords: ''
+slug: blog3
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-</div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="/blogs/blog3_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="comparing-my-home-countries-on-life-expectancy." class="section level1">
+<h1>Comparing my home countries on Life Expectancy.</h1>
+<p>As you might have read already, I was born in Italy, yet I spent the last six Years living in Vienna,Austria. This is why I feel very connected to the countries.
+Accessing the <code>gapminder</code> dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007 I will draw a comparison between these countries.</p>
+<pre class="r"><code>glimpse(gapminder)</code></pre>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
+<pre class="r"><code>gapminder</code></pre>
+<pre><code>## # A tibble: 1,704 × 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</code></pre>
+<p>Your task is to produce two graphs of how life expectancy has changed over the years for the <code>country</code> and the <code>continent</code> you come from.</p>
+<p>I have created the <code>Italy_data, Austria_data</code> and <code>Europe_data</code> with the code below.</p>
+<pre class="r"><code>Italy_data &lt;- gapminder %&gt;% 
+            filter(country == &quot;Italy&quot;)
+
+Austria_data &lt;- gapminder %&gt;%
+            filter(country == &quot;Austria&quot;)
+
+continent_data &lt;- gapminder %&gt;% 
+            filter(continent == &quot;Europe&quot;)</code></pre>
+<pre class="r"><code>plot_IT &lt;- ggplot(Italy_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+    theme_bw()+
+  labs(title= &quot;Life Expectancy over time in Italy&quot;,
+       x= &quot;Years&quot;,
+       y= &quot;Life Expectancy&quot;)
+   NULL </code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>plot_AUT &lt;- ggplot(Austria_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+    theme_bw()+
+   labs(title = &quot;Life Expectancy over time in Austria&quot;,
+       x= &quot;Years&quot;,
+       y= &quot;Life Expectancy&quot;)
+   NULL </code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>plot_IT</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/blog3_files/figure-html/lifeExp_Italy%20and%20Austria-1.png" width="672" /></p>
+<pre class="r"><code>plot_AUT</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/blog3_files/figure-html/lifeExp_Italy%20and%20Austria-2.png" width="672" /></p>
+<blockquote>
+<h3 id="italy">Italy<br />
+</h3>
+<p>The graph shows the steady increase in Life expectancy in Italy starting from 1952.
+Nowadays, Italians are expected to live more than 80 years on average in comparison to less than 65 years in 1952 on average.
+One of the reasons that could explain a higher life expectancy is an increase in medical assistance and better living standards.
+At a first sight, I struggle to identify a big difference between the developmnent of Life Expectancy over time.
+For this reason, I will now create a plot for all countries in Europe, to see if there are any outliers.</p>
+</blockquote>
+<pre class="r"><code> ggplot(data= continent_data, mapping = aes(x = year , y = lifeExp , colour= country, group = country))+
+   geom_point() + 
+   geom_smooth(se = FALSE) +
+    theme_bw()+
+  labs(title = &quot;Development of Life Expectancy per country in Europe &quot;,
+       x = &quot; Years&quot;,
+       y = &quot;Life Expectancy&quot;)+
+ NULL</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/blog3_files/figure-html/lifeExp_Europe-1.png" width="672" />
+&gt; This plot allows us to notice that the European Life expectancy in 1952 ranged from 55 years in Bosnia to 72 in Norway. However, it also portraits an outlier, namely Turkey, which has seen the steadiest increase in life Expectancy over time, catching up with the more historically developed countries such as the once from the EU.</p>
+<blockquote>
+<h3 id="europe">Europe<br />
+</h3>
+<p>Since 1952, every European country’s life expectancy has increased. Even though the increase in some countries is greater than in others, the gap between European countries is now narrower than it was in 1952.
+As a result, some of the countries with the lowest life expectancy in 1952 have shown a greater increase in life expectancy over time than countries with already higher life expectancy One reason for this could be that these countries have been underdeveloped in terms of access to medical aid and living standards and have exploited the knowledge and assistance of other countries strongly improving life expectancy.
+Countries with higher life expectancy in 1952, on the other hand, could primarily increase their life expectancy through new research and findings. Furthermore, once a certain standard is reached, it appears difficult to increase life expectancy further.</p>
+</blockquote>
+<p>Next, I will produce a general graph plotting life expectancy over time graph, grouped by continent.</p>
+<pre class="r"><code> ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= country))+
+   geom_point() + 
+   geom_smooth(se = FALSE) +
+   facet_wrap(~continent) + 
+   theme(legend.position=&quot;none&quot;) +  #remove all legends
+   NULL</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/blog3_files/figure-html/lifeExp_facet_by_continent-1.png" width="672" /></p>
+<blockquote>
+<h3 id="life-expectancy-over-time">Life expectancy over time<br />
+</h3>
+<p>Overall, life expectancy is rising, but there are some regional differences. While life expectancy is increasing in every country in the Americas, Oceania, and Europe, and the gap between countries is closing, it is widening in Africa and Asia.
+This could be explained from stronger polarization between the development of countries within Asia and Africa: some countries in Asia and Africa are very underdeveloped or do not have access to the same financial aid as other countries, whereas other countries have made significant progress over the years. Another factor that may have reduced life expectancy in some countries is war, disease, or political instability.</p>
+</blockquote>
 </div>
