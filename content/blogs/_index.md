@@ -1,9 +1,10 @@
 ---
 date: "2017-10-31T22:27:21-05:00"
 draft: false
-image: pic02.jpg
+image: code.jpg
 slug: blogs
-title: Lifestyle
+title: My first projects with R
 ---
 
-My first projects with R.
+Welcome to my first projects with R! Do not be judgmental, I just started!
+If you have any idea about new projects, please send me an email! 
