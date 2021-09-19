@@ -2,7 +2,7 @@
 title: "Social Projects"
 description: A brief collection of my social projects I participated in
 draft: no
-image: bello.jpg
+image: community.jpg
 keywords: ''
 slug: Social Projects
 categories:
