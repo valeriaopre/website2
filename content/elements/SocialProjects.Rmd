@@ -4,7 +4,7 @@ description: A brief collection of my social projects I participated in
 draft: no
 image: community.jpg
 keywords: ''
-slug: Social Projects
+slug: SocialProjects
 categories:
 - ''
 - ''

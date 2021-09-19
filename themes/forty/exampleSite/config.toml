@@ -60,7 +60,7 @@ disqusShortname = ""
       url = "blogs/blog2"
 
    [[params.navigation.links]]
-      name = "Project three"
+      name = "Life Expectancy comparison between my home countries; An overview"
       url = "blogs/blog3"
       
     [[params.navigation.links]]
@@ -113,7 +113,7 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "Social Projects"
-      subtitle = "Lorem Etiam Nullam"
+      subtitle = "Does it work"
       image = "community.jpg"
       url = "elements/SocialProjects"
 
