@@ -65,8 +65,6 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
-      - name: Generic Blog
-        url: blogs/ipsum
       - name: Social Projects
         url: elements/SocialProjects
     menu: Menu
@@ -83,7 +81,7 @@ params:
         subtitle: Increasing political polarisation in the US could lead to worrying health issues
         title: US elections and vaccinations rate
         url: blogs/blog11
-      - image: eu1.jpg
+      - image: commmunity.jpg
         subtitle: Being part of a community has always been a key pillar to my life.
         title: Social Projects
         url: elements/socialProjects
