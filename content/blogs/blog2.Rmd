@@ -1,30 +1,132 @@
 ---
-title: "Untitled"
+title: "Change in the of rentals bike in 2020 because of national lockdowns"
 author: "Vale"
 date: "9/17/2021"
 output: html_document
+slug: blog2
+image: santander.jpg
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(infer)
+library(disk.frame)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### How did the number of Santander Bikes change during the lockdown period?
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+I decided to run an analysis and plot the results by different months. To do so, I structured the analysis on different levels. 
 
-```{r cars}
-summary(cars)
+# Excess rentals in TfL bike sharing
+
+Recall the TfL data on how many bikes were hired every single day. We can get the latest data by running the following
+
+```{r, get_tfl_data, cache=TRUE}
+
+url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
+
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
+
+# Use read_excel to read it as dataframe
+bike0 <- read_excel(bike.temp,
+                   sheet = "Data",
+                   range = cell_cols("A:B"))
+
+# change dates to get year, month, and week
+bike <- bike0 %>% 
+  clean_names() %>% 
+  rename (bikes_hired = number_of_bicycle_hires) %>% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))
 ```
 
-## Including Plots
+I then created a facet grid that plots bikes hired by month and year.
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+> It becomes clear that the effect of national restrictive measures such as lockdowns have greatly influenced the bikes rent. This helps us explain the difference between the average number of rented bikes in May and June 2020 with previous years.
+
+```{r}
+actual_bike <- bike %>%
+               filter (year >= 2016) %>%
+               group_by(year,month) %>%
+               summarise(actual = mean(bikes_hired))
+
+expected_bike <- actual_bike %>%
+                 group_by(month) %>%
+                 summarise(expected = mean(actual))
+
+comparison_bike <- left_join(actual_bike, expected_bike, by = "month")
+
+comparison_bike
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r, tfl_absolute_monthly_change, out.width="100%"}
+comparison_bike %>%
+  ggplot(aes(x = month, group = 1)) +
+  geom_line(aes(x = month, y = actual), color = "black", size = 0.1) +
+  geom_line(aes(x = month, y = expected), color = "blue", size = 0.8) +
+  geom_ribbon(aes(ymin = expected, ymax = pmin(expected, actual)),fill = "red", alpha=0.2)  +
+  geom_ribbon(aes(ymin = actual, ymax = pmin(expected, actual)),fill = "green", alpha=0.2)+
+  facet_wrap(~ year) +
+  theme_bw()+
+  labs(
+    title= "Montly changes in Tfl bikes rentals",
+    y="bike rentals",
+    x="Months"
+  )
+```
+
+```{r}
+actual_bike_w <- bike %>%
+               filter (year >= 2016) %>%
+               group_by(year, week) %>%
+               summarise(actual = mean(bikes_hired))
+
+expected_bike_w <- actual_bike_w %>%
+                 group_by(week) %>%
+                 summarise(expected = mean(actual))
+
+comparison_bike_w <- left_join(actual_bike_w, expected_bike_w, by = "week") %>%
+                     group_by(week) %>%
+                     mutate(dchanges = (actual - expected) / expected )
+
+comparison_bike_w = comparison_bike_w %>%
+  filter(!(year ==2021 & week ==53))
+```
+
+
+
+
+```{r tfl_absolute_monthly_changemj, out.width="100%"}
+comparison_bike_w %>%
+  ggplot(aes(x = week, group = 1)) +
+  geom_line(aes(x = week, y = dchanges, fill = "black")) +
+  geom_ribbon(aes(ymin = 0, ymax = pmin(0, dchanges)),fill = "red", alpha=0.2)  +
+  geom_ribbon(aes(ymin = dchanges, ymax = pmin(0, dchanges)),fill = "green", alpha=0.2)+
+  facet_wrap(~ year) +
+  theme_bw()+
+  labs(
+    title= "Weekly changes in Tfl bikes rentals",
+    y= "Bikes rentals",
+    x="Weeks"
+  )
+```
+
+
+In order to calculate the expected rentals I used the mean of rented bikes/monthly since we thought this was a better measurement. Since the monthly data of the actual rented bikes does not seem to be heavily right/left skewed, the mean is a good tool to calculate the expected rentals. If the data were heavily skewed, we would have changed to the median.
+
