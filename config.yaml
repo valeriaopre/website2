@@ -57,7 +57,7 @@ params:
   image: 'bello.jpg'
   name: Valeria Opre
   navigation:
-   # button1:
+    button1:
     #  - name: My projects
      #   url: blogs
     links:
