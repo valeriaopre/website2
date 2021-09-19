@@ -44,10 +44,10 @@ diverse democracy.
 For this reason I was more than honoured to be chosen to _lead a class of more than 70 students_ to the European Commission in the late winter of 2018! During the field trip we had the great pleasure of meeting the ex-president of 
 the European Commission, Junker and other prominent personalities!
 
-```{r sm1, echo=FALSE, out.width="60%"}
- knitr::include_graphics("/img/eu.jpg", error = FALSE)
+```{r sm1, echo=FALSE, out.width="60%", fig.align="center"}
+knitr::include_graphics("/img/eu.jpg", error = FALSE)
 ```
 
-```{r sm3, echo=FALSE, out.width="60%"}
+```{r sm3, echo=FALSE, out.width="60%", fig.align="center"}
  knitr::include_graphics("/img/junker.jpg", error = FALSE)
 ```
