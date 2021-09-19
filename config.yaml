@@ -65,6 +65,8 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
+      - name: Generic Blog
+        url: blogs/ipsum
       - name: Social Projects
         url: elements/SocialProjects
     menu: Menu
