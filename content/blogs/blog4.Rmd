@@ -1,20 +1,42 @@
 ---
-title: "TITLE"
+title: "Change in the of rentals bike in 2020 because of national lockdowns"
 author: "Valeria"
 date: "9/17/2021"
 output: html_document
+slug: blog4
 ---
 
 
 
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(infer)
+library(disk.frame)
+```
+
+
+### How did the number of Santander Bikes change during the lockdown period?
+
+I decided to run an analysis and plot the results by different months. To do so, I structured the analysis on different levels. 
 
 # Excess rentals in TfL bike sharing
 
 Recall the TfL data on how many bikes were hired every single day. We can get the latest data by running the following
 
 ```{r, get_tfl_data, cache=TRUE}
+
 url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
-library(disk.frame)
+
+
 # Download TFL data to temporary file
 httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
 
@@ -32,13 +54,11 @@ bike <- bike0 %>%
           week = isoweek(day))
 ```
 
-We can easily create a facet grid that plots bikes hired by month and year.
+I then created a facet grid that plots bikes hired by month and year.
 
 ```{r tfl_month_year_grid, out.width="100%"}
 knitr::include_graphics(here::here("images", "tfl_distributions_monthly.png"), error = FALSE)
 ```
-
-Look at May and Jun and compare 2020 with the previous years. What's happening?
 
 > It becomes clear that the effect of national restrictive measures such as lockdowns have greatly influenced the bikes rent. This helps us explain the difference between the average number of rented bikes in May and June 2020 with previous years.
 
@@ -90,8 +110,11 @@ comparison_bike_w <- left_join(actual_bike_w, expected_bike_w, by = "week") %>%
 
 comparison_bike_w = comparison_bike_w %>%
   filter(!(year ==2021 & week ==53))
-
 ```
+
+
+
+
 ```{r tfl_absolute_monthly_changemj, out.width="100%"}
 comparison_bike_w %>%
   ggplot(aes(x = week, group = 1)) +
@@ -107,5 +130,6 @@ comparison_bike_w %>%
   )
 ```
 
-Should you use the mean or the median to calculate your expected rentals? Why?
-> In order to calculate the expected rentals we used the mean of rented bikes/montly since we thought this was a better measurement. Since the monthly data of the actual rented bikes does not seem to be heavily right/left skewed, the mean is a good tool to calcukate the expected rentals. If the data were heavily skewed, we would have changed to the median.
+
+In order to calculate the expected rentals I used the mean of rented bikes/monthly since we thought this was a better measurement. Since the monthly data of the actual rented bikes does not seem to be heavily right/left skewed, the mean is a good tool to calculate the expected rentals. If the data were heavily skewed, we would have changed to the median.
+

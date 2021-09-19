@@ -1,6 +1,7 @@
 ---
-title: "Valeria Opre"
-description: A graph
+title: "US elections and vaccinations rate"
+description: Increasing political polarisation in the US could lead to worrying health
+  issues
 draft: no
 image: trump.jpg
 keywords: ''

@@ -1,6 +1,6 @@
 ---
-title: "blog4"
-author: "Vale"
+title: "Change in the of rentals bike in 2020 because of national lockdowns"
+author: "Valeria"
 date: "9/17/2021"
 output: html_document
 ---
@@ -8,22 +8,111 @@ output: html_document
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="how-did-the-number-of-santander-bikes-change-during-the-lockdown-period" class="section level3">
+<h3>How did the number of Santander Bikes change during the lockdown period?</h3>
+<p>I decided to run an analysis and plot the results by different months. To do so, I structured the analysis on different levels.</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="/blogs/blog4_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="excess-rentals-in-tfl-bike-sharing" class="section level1">
+<h1>Excess rentals in TfL bike sharing</h1>
+<p>Recall the TfL data on how many bikes were hired every single day. We can get the latest data by running the following</p>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
+
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2021-08-23T14%3A32%3A29/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20210919%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210919T185536Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=5b530fc24d09b7737829f53277ec2e3e908bc81c6634aabcd16797da127f240f&amp;X-Amz-SignedHeaders=host]
+##   Date: 2021-09-19 18:59
+##   Status: 200
+##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##   Size: 173 kB
+## &lt;ON DISK&gt;  /var/folders/3w/94zzw5vd64bfx8vzwsrkmpwc0000gn/T//RtmphT6DiZ/file175215ea73484.xlsx</code></pre>
+<pre class="r"><code># Use read_excel to read it as dataframe
+bike0 &lt;- read_excel(bike.temp,
+                   sheet = &quot;Data&quot;,
+                   range = cell_cols(&quot;A:B&quot;))
+
+# change dates to get year, month, and week
+bike &lt;- bike0 %&gt;% 
+  clean_names() %&gt;% 
+  rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))</code></pre>
+<p>I then created a facet grid that plots bikes hired by month and year.</p>
+<pre class="r"><code>knitr::include_graphics(here::here(&quot;images&quot;, &quot;tfl_distributions_monthly.png&quot;), error = FALSE)</code></pre>
+<p><img src="/Users/Valeriaopre/Desktop/website2/images/tfl_distributions_monthly.png" width="100%" /></p>
+<blockquote>
+<p>It becomes clear that the effect of national restrictive measures such as lockdowns have greatly influenced the bikes rent. This helps us explain the difference between the average number of rented bikes in May and June 2020 with previous years.</p>
+</blockquote>
+<pre class="r"><code>actual_bike &lt;- bike %&gt;%
+               filter (year &gt;= 2016) %&gt;%
+               group_by(year,month) %&gt;%
+               summarise(actual = mean(bikes_hired))</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>expected_bike &lt;- actual_bike %&gt;%
+                 group_by(month) %&gt;%
+                 summarise(expected = mean(actual))
+
+comparison_bike &lt;- left_join(actual_bike, expected_bike, by = &quot;month&quot;)
+
+comparison_bike</code></pre>
+<pre><code>## # A tibble: 67 × 4
+## # Groups:   year [6]
+##     year month actual expected
+##    &lt;dbl&gt; &lt;ord&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  2016 Jan   18914.   19763.
+##  2  2016 Feb   20608.   21433.
+##  3  2016 Mar   21435    22491.
+##  4  2016 Apr   25444.   27392.
+##  5  2016 May   32699.   33163.
+##  6  2016 Jun   32108.   36618.
+##  7  2016 Jul   38336.   37974.
+##  8  2016 Aug   37368.   34955.
+##  9  2016 Sep   35101.   33994.
+## 10  2016 Oct   30488.   29660.
+## # … with 57 more rows</code></pre>
+<pre class="r"><code>comparison_bike %&gt;%
+  ggplot(aes(x = month, group = 1)) +
+  geom_line(aes(x = month, y = actual), color = &quot;black&quot;, size = 0.1) +
+  geom_line(aes(x = month, y = expected), color = &quot;blue&quot;, size = 0.8) +
+  geom_ribbon(aes(ymin = expected, ymax = pmin(expected, actual)),fill = &quot;red&quot;, alpha=0.2)  +
+  geom_ribbon(aes(ymin = actual, ymax = pmin(expected, actual)),fill = &quot;green&quot;, alpha=0.2)+
+  facet_wrap(~ year) +
+  theme_bw()+
+  labs(
+    title= &quot;Montly changes in Tfl bikes rentals&quot;,
+    y=&quot;bike rentals&quot;,
+    x=&quot;Months&quot;
+  )</code></pre>
+<p><img src="/blogs/blog4_files/figure-html/tfl_absolute_monthly_change-1.png" width="100%" /></p>
+<pre class="r"><code>actual_bike_w &lt;- bike %&gt;%
+               filter (year &gt;= 2016) %&gt;%
+               group_by(year, week) %&gt;%
+               summarise(actual = mean(bikes_hired))</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>expected_bike_w &lt;- actual_bike_w %&gt;%
+                 group_by(week) %&gt;%
+                 summarise(expected = mean(actual))
+
+comparison_bike_w &lt;- left_join(actual_bike_w, expected_bike_w, by = &quot;week&quot;) %&gt;%
+                     group_by(week) %&gt;%
+                     mutate(dchanges = (actual - expected) / expected )
+
+comparison_bike_w = comparison_bike_w %&gt;%
+  filter(!(year ==2021 &amp; week ==53))</code></pre>
+<pre class="r"><code>comparison_bike_w %&gt;%
+  ggplot(aes(x = week, group = 1)) +
+  geom_line(aes(x = week, y = dchanges, fill = &quot;black&quot;)) +
+  geom_ribbon(aes(ymin = 0, ymax = pmin(0, dchanges)),fill = &quot;red&quot;, alpha=0.2)  +
+  geom_ribbon(aes(ymin = dchanges, ymax = pmin(0, dchanges)),fill = &quot;green&quot;, alpha=0.2)+
+  facet_wrap(~ year) +
+  theme_bw()+
+  labs(
+    title= &quot;Weekly changes in Tfl bikes rentals&quot;,
+    y= &quot;Bikes rentals&quot;,
+    x=&quot;Weeks&quot;
+  )</code></pre>
+<pre><code>## Warning: Ignoring unknown aesthetics: fill</code></pre>
+<p><img src="/blogs/blog4_files/figure-html/tfl_absolute_monthly_changemj-1.png" width="100%" /></p>
+<p>In order to calculate the expected rentals I used the mean of rented bikes/monthly since we thought this was a better measurement. Since the monthly data of the actual rented bikes does not seem to be heavily right/left skewed, the mean is a good tool to calculate the expected rentals. If the data were heavily skewed, we would have changed to the median.</p>
 </div>
