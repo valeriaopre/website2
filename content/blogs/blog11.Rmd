@@ -2,7 +2,7 @@
 title: "Valeria Opre"
 description: A graph
 draft: no
-image: pic02.jpg
+image: trump.jpg
 keywords: ''
 slug: blog11
 categories:

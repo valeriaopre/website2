@@ -108,7 +108,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "US elections and vaccinations rate"
       subtitle = "Worrying polarisation of healthcare decisions: vaccination rates in the US seem to follow political parties rather than common sense."
-      image = "bello.jpg"
+      image = "trump.jpg"
       url = "blogs/blog11"
 
     [[params.tiles.showcase]]
