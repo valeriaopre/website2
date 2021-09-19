@@ -17,7 +17,8 @@ library(here)
 ```
 
 
-###Let's get on stage! Jedermann in Vienna: a great success! 
+### __IT IS WHAT IT IS. Until it's not__
+### Let's get on stage! Jedermann in Vienna: a great success! 
 
 
 ```{r sm, echo=FALSE, out.width="100%"}
