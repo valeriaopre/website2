@@ -114,7 +114,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Social Projects"
       subtitle = "Does it work"
-      image = "community.jpg"
+      image = "eu1.jpg"
       url = "elements/SocialProjects"
 
     [[params.tiles.showcase]]

@@ -3,7 +3,7 @@ title: "Social Projects"
 description: A brief collection of my social projects I participated in
 draft: no
 output: html_document
-image: community.jpg
+image: eu1.jpg
 keywords: ''
 slug: SocialProjects
 categories:
@@ -15,7 +15,10 @@ library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(gapminder)  # gapminder dataset
 library(here)
 ```
+
+
 ###Let's get on stage! Jedermann in Vienna: a great success! 
+
 
 ```{r sm, echo=FALSE, out.width="20%"}
  knitr::include_graphics("/img/vienna.jpg", error = FALSE)
@@ -32,13 +35,19 @@ If you are interested in this project, you can read more about it on [Austrian n
 
 ### The European Union: what a pleasure!
 
+As an Italian, values such as pluralism, freedom of expression, or peaceful coexistence often seem
+self-evident and are too rarely questioned. A glance across national borders is often enough to see
+how fragile these concepts can actually be. However, as the daughter of two former refugees, I know
+firsthand the complexity and harshness that can arise from an unstable political and social landscape.
+This is why I consider it extremely valuable to be able to work on the fundamentals of a free and
+diverse democracy. 
+For this reason I was more than honoured to be chosen to _lead a class of more than 70 students_ to the European Commission in the late winter of 2018! During the field trip we had the great pleasure of meeting the ex-president of 
+the European Commission, Junker and other prominent personalities!
+
 ```{r sm1, echo=FALSE, out.width="20%"}
  knitr::include_graphics("/img/eu.jpg", error = FALSE)
 ```
 
 ```{r sm3, echo=FALSE, out.width="20%"}
- knitr::include_graphics("/img/eu1.jpg", error = FALSE)
+ knitr::include_graphics("/img/junker.jpg", error = FALSE)
 ```
-
-
-organisation "The Lifeball" in Vienna, that raises awareness about various diseases within the LGBTQ+ community and provides shelter and financial aid to its members I felt like a found a way to express my support more actively!
