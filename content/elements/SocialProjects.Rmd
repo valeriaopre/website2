@@ -2,6 +2,7 @@
 title: "Social Projects"
 description: A brief collection of my social projects I participated in
 draft: no
+output: html_document
 image: community.jpg
 keywords: ''
 slug: SocialProjects
@@ -9,16 +10,35 @@ categories:
 - ''
 - ''
 ---
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+```
+###Let's get on stage! Jedermann in Vienna: a great success! 
 
-##Let's get on stage! Jedermann in Vienna: a great success! 
+```{r sm, echo=FALSE, out.width="20%"}
+ knitr::include_graphics("/img/vienna.jpg", error = FALSE)
+```
 
 Theater has been part of my younger days for many years! I felt the most alive while stepping on the stage and bringing any character to life! Being an actress gave me the chance to access the most diverse emotions, situations and even eras every time the light on the stages went on and the silence of the audience flood the theater.
 
 Marginalized groups have always had a very close place in my heart. 
 This is why, when I came across the play organised by the LifeBall in Vienna, a play that aimed to normalize homosexual love while raising funds for Aids Hospice, I finally found a way to fully express my support to this community.
 
-The play took place in the national Cathedral of St. Stephan, a symbol of Christianity and Austrian proud. Aas I joined the organisation, we were able to involve more than 100 volunteers 
+The play took place in the national Cathedral of St. Stephan, a symbol of Christianity and Austrian proud. As I joined the organisation, we were able to involve more than 100 volunteers into putting together a very provocative play that aimed to make the most influential people in Vienna reflect on how sexuality should not be something to be blamed for, especially not in the name of a God. And most importantly, we were able to raise almost 70.000 euros to devolve for Hospices helping young LGBTQ+ who lost their home for who they are.
 
+If you are interested in this project, you can read more about it on [Austrian newspapers](https://kurier.at/gesund/jedermann-reloaded-im-stephansdom-68500-euro-fuer-aids-hospiz/400341427).
+
+### The European Union: what a pleasure!
+
+```{r sm1, echo=FALSE, out.width="20%"}
+ knitr::include_graphics("/img/eu.jpg", error = FALSE)
+```
+
+```{r sm3, echo=FALSE, out.width="20%"}
+ knitr::include_graphics("/img/eu1.jpg", error = FALSE)
+```
 
 
 organisation "The Lifeball" in Vienna, that raises awareness about various diseases within the LGBTQ+ community and provides shelter and financial aid to its members I felt like a found a way to express my support more actively!
