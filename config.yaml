@@ -63,12 +63,14 @@ params:
     links:
       - name: Home
         url: '#'
-      - name: Blogs
+      - name: My project portfolio 
         url: blogs
       - name: Where my life beginns
         url: life
       - name: Social Projects
         url: elements/SocialProjects
+      - name: Equity Research Pitches
+        url: equity
     menu: Menu
     subtitle: Personal Portfolio
     title: Valeria Opre
@@ -94,7 +96,7 @@ params:
         image: santander.jpg
         subtitle: Restrictive measures highly influenced the number of rentals
         title: Change in the of rentals bike in 2020 because of national lockdowns
-        url: blogs/blog4
+        url: blogs/blog2
       - image: cover.jpg
         subtitle: A sweedish construction company that even Greta would approve of!
         title: Winning equity research pitch awarded from McKinsey
