@@ -21,10 +21,10 @@ library(here)
 
 I like to think that it has been allowed for me to stand where I do today by many things. 
 Of course, I might have contributed to it by working hard and not giving up in the most difficult moments.
-However, it would be naive and even inconsiderate to believe that it was all me. 
-I am the fruit of privilege, luck, good resources and good timing more than of my hard work.
+However, it would be naive and even inconsiderate to believe that it was _all me._ 
+__I am the fruit of privilege, luck, good resources and perfect timing more than of any amount of hard work.__
 Recognizing this awakens an intrinsic responsibility towards making decisions that will improve our society and help as many people as possible!
-I would like to take you on a journey and show you two particular projects close to my heart.
+Hence, I would like to take you on a journey and show you two social projects close to my heart.
 
 ### Let's get on stage! Jedermann in Vienna: a great success! 
 
