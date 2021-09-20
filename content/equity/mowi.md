@@ -4,6 +4,6 @@ draft: false
 image: salmon.jpg
 slug: equity
 title: How much is the Fish?
-url: equity/Skanska.pdf
+url: equity/Mowi.pdf
 ---
 
