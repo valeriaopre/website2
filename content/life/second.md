@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: "I like keeping a positive mindset through my life! To do so, I find confort in conversation with friends, food and memes!"
+description: "I like keeping a positive mindset through my life! To do so, I find comfort in conversation with friends, food and memes!"
 draft: false
 image: joke.jpg
 keywords: ""

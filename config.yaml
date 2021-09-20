@@ -65,7 +65,7 @@ params:
         url: '#'
       - name: My project portfolio 
         url: blogs
-      - name: Where my life beginns
+      - name: Where my life begins
         url: life
       - name: Social Projects
         url: elements/SocialProjects
