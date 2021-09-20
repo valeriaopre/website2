@@ -1,9 +1,9 @@
 ---
 title: "Social Projects"
-description: A brief collection of my social projects I participated in
+description: A brief collection of social projects I participated in
 draft: no
 output: html_document
-image: eu1.jpg
+image: community.jpg
 keywords: ''
 slug: SocialProjects
 categories:
@@ -38,9 +38,6 @@ The play took place in the national Cathedral of St. Stephan, a symbol of Christ
 
 If you are interested in this project, you can read more about it on [Austrian newspapers](https://kurier.at/gesund/jedermann-reloaded-im-stephansdom-68500-euro-fuer-aids-hospiz/400341427).
 
-```{r sm, echo=FALSE, out.width="100%"}
- knitr::include_graphics("/img/vienna.jpg", error = FALSE)
-```
 
 ### The European Union: what a pleasure!
 
