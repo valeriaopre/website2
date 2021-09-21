@@ -1,8 +1,7 @@
 ---
-title: "Social Projects"
+title: "Social Project"
 description: A brief collection of social projects I participated in
 draft: no
-output: html_document
 image: community.jpg
 keywords: ''
 slug: SocialProjects
@@ -10,10 +9,12 @@ categories:
 - ''
 - ''
 ---
-```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
-library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
-library(gapminder)  # gapminder dataset
-library(here)
+
+
+```{r warning=FALSE, message=FALSE, echo=FALSE}
+#library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+#library(here)
+
 ```
 
 
@@ -50,10 +51,11 @@ diverse democracy.
 For this reason I was more than honoured to be chosen to _lead a class of more than 70 students_ to the European Commission in the late winter of 2018! During the field trip we had the great pleasure of meeting the ex-president of 
 the European Commission, Junker and other prominent personalities!
 
-```{r sm1, echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("/img/eu.jpg", error = FALSE)
+
+```{r sm1oo, echo=FALSE, out.width="60%", fig.align="center"}
+#knitr::include_graphics("/img/eu.JPG", error = FALSE)
 ```
 
 ```{r sm3, echo=FALSE, out.width="60%", fig.align="center"}
- knitr::include_graphics("/img/junker.jpg", error = FALSE)
+#knitr::include_graphics("img/Junker.jpg", error = FALSE)
 ```
