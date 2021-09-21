@@ -1,12 +1,14 @@
 ---
 title: "Change in the of rentals bike in 2020 because of national lockdowns"
-author: "Vale"
-date: "9/17/2021"
-output: html_document
-slug: blog2
+description: Restrictive measures highly influenced the number of rentals
+draft: no
 image: santander.jpg
+keywords: ''
+slug: blog2
+categories:
+- ''
+- ''
 ---
-
 
 ```{r load-libraries, include=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
