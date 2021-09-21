@@ -7,7 +7,7 @@ description: "I like keeping a positive mindset through my life! To do so, I fin
 draft: false
 image: joke.jpg
 keywords: ""
-slug: life
+slug: memes
 title: Memes
 ---
 

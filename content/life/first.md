@@ -12,7 +12,7 @@ But believe me, if it weren't for the coffee, I'd have no identifiable personali
 draft: false
 image: coffee.jpg
 keywords: ""
-slug: life
+slug: first
 title: Coffee
 ---
 

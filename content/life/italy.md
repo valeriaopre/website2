@@ -7,7 +7,7 @@ description: "As someone once said, Italy is the dream that keeps returning for 
 draft: false
 image: bello.jpg
 keywords: ""
-slug: life
+slug: Italy
 title: Italy
 ---
 
