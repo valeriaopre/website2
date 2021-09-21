@@ -92,10 +92,10 @@ params:
         subtitle: New medical standards and increased GDP might lead the way to higher Life Expectancy for all countries.
         title: Life Expectancy comparison between my home countries; An overview
         url: blogs/blog3
-      - image: santander.jpg
-        subtitle: Restrictive measures highly influenced the number of rentals
-        title: Change in the of rentals bike in 2020 because of national lockdowns
-        url: blogs/blog2
+      # image: santander.jpg
+       # subtitle: Restrictive measures highly influenced the number of rentals
+      #  title: Change in the of rentals bike in 2020 because of national lockdowns
+      # url: blogs/blog2
       - image: cover.jpg
         subtitle: A sweedish construction company that even Greta would approve of!
         title: Winning equity research pitch awarded from McKinsey, June 2021
