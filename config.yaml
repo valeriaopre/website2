@@ -66,8 +66,8 @@ params:
         url: blogs
       - name: Where my life begins
         url: life
-      - name: Social Projects
-        url: elements/SocialProjects
+      #name: Social Projects
+      #url: elements/SocialProjects
       - name: Equity Research Pitches
         url: equity
     menu: Menu
@@ -84,10 +84,10 @@ params:
         subtitle: Increasing political polarisation in the US could lead to worrying health issues
         title: US elections and vaccinations rate
         url: blogs/blog11
-      - image: community.jpg
-        subtitle: Being part of a community has always been a key pillar to my life.
-        title: Social Projects
-        url: elements/socialProjects
+      # image: community.jpg
+       # subtitle: Being part of a community has always been a key pillar to my life.
+        #title: Social Projects
+        #url: elements/socialProjects
       - image: word.jpg
         subtitle: New medical standards and increased GDP might lead the way to higher Life Expectancy for all countries.
         title: Life Expectancy comparison between my home countries; An overview
